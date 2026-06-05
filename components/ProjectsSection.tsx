@@ -231,7 +231,7 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="relative h-80 sm:h-96 rounded-2xl overflow-hidden bg-surface/30 backdrop-blur-sm border border-white/5 shadow-2xl flex items-center justify-center group hover:border-accent/40 smooth-transition"
+                className="relative h-80 sm:h-[28rem] rounded-2xl overflow-hidden bg-surface/30 backdrop-blur-sm border border-white/5 shadow-2xl flex items-center justify-center group hover:border-accent/40 smooth-transition"
               >
                 {/* Background glow and subtle color overlays */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent-secondary/10 group-hover:from-accent/15 group-hover:to-accent-secondary/15 transition-all duration-500" />
@@ -242,7 +242,7 @@ export function ProjectsSection() {
                     src={project.images[0]}
                     alt={`${project.title} screenshot`}
                     fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 ) : (

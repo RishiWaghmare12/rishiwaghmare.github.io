@@ -123,7 +123,7 @@ export function AboutSection() {
               viewport={{ once: true }}
             >
               {[
-                { label: 'Years Active', value: '2+' },
+                { label: 'Years Active', value: '3+' },
                 { label: 'Projects', value: '15+' },
                 { label: 'Technologies', value: '20+' },
                 { label: 'Certifications', value: '3' },

@@ -211,6 +211,7 @@ export const portfolioData: PortfolioData = {
         'Academic dashboards',
       ],
       technologies: ['Web Technologies', 'MySQL', 'Data Analytics'],
+      images: ['/projects/student-performance-homepage.png'],
       duration: '2025',
       startDate: '2025-01',
       endDate: '2025-06',
