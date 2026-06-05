@@ -82,14 +82,14 @@ export function CertificationsSection() {
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold text-text uppercase tracking-wider mb-2">
+                    <p className="text-sm font-bold text-text uppercase tracking-wider mb-3">
                       Key Skills
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {cert.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="px-2.5 py-1 rounded-full text-[10px] bg-accent/10 border border-accent/20 text-accent font-semibold"
+                          className="px-3 py-1 rounded-full text-xs sm:text-sm bg-accent/10 border border-accent/20 text-accent font-semibold"
                         >
                           {skill}
                         </span>

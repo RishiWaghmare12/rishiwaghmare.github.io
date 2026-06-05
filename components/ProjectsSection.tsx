@@ -1,8 +1,69 @@
 'use client';
 
+import type { ReactNode } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Zap } from 'lucide-react';
+import { ExternalLink, Github, Zap, Shield, Database, Layers, AlertTriangle, Monitor } from 'lucide-react';
+import {
+  FaPython,
+  FaJava,
+  FaReact,
+  FaNode,
+  FaGit,
+  FaGithub,
+  FaBrain,
+  FaChartLine,
+} from 'react-icons/fa';
+import {
+  SiMysql,
+  SiMongodb,
+  SiPostgresql,
+  SiSpringboot,
+  SiOpencv,
+  SiQiskit,
+  SiPytorch,
+  SiScikitlearn,
+  SiRazorpay,
+  SiHtml5,
+  SiCss3,
+} from 'react-icons/si';
 import { portfolioData } from '@/data/portfolio';
+
+export const techIcons: Record<string, ReactNode> = {
+  'React.js': <FaReact className="w-5 h-5" />,
+  'Spring Boot': <SiSpringboot className="w-5 h-5" />,
+  MySQL: <SiMysql className="w-5 h-5" />,
+  MongoDB: <SiMongodb className="w-5 h-5" />,
+  PostgreSQL: <SiPostgresql className="w-5 h-5" />,
+  'Node.js': <FaNode className="w-5 h-5" />,
+  Python: <FaPython className="w-5 h-5" />,
+  Java: <FaJava className="w-5 h-5" />,
+  Razorpay: <SiRazorpay className="w-5 h-5" />,
+  GitHub: <FaGithub className="w-5 h-5" />,
+  Git: <FaGit className="w-5 h-5" />,
+  PyTorch: <SiPytorch className="w-5 h-5" />,
+  'Scikit-Learn': <SiScikitlearn className="w-5 h-5" />,
+  YOLOv8: <SiOpencv className="w-5 h-5" />,
+  OpenCV: <SiOpencv className="w-5 h-5" />,
+  Qiskit: <SiQiskit className="w-5 h-5" />,
+  PCA: <FaChartLine className="w-5 h-5" />,
+  'Quantum ML': <FaBrain className="w-5 h-5" />,
+  'Machine Learning': <FaBrain className="w-5 h-5" />,
+  'Data Analytics': <FaChartLine className="w-5 h-5" />,
+  Cybersecurity: <Shield className="w-5 h-5" />,
+  'Network Security': <Shield className="w-5 h-5" />,
+  'Threat Detection': <AlertTriangle className="w-5 h-5" />,
+  'Web Technologies': <Layers className="w-5 h-5" />,
+  'REST APIs': <Database className="w-5 h-5" />,
+  HTML5: <SiHtml5 className="w-5 h-5" />,
+  CSS3: <SiCss3 className="w-5 h-5" />,
+  SQL: <SiMysql className="w-5 h-5" />,
+  'Responsive UI Design': <Layers className="w-5 h-5" />,
+  'Database Management Systems': <Database className="w-5 h-5" />,
+  'Operating Systems': <Monitor className="w-5 h-5" />,
+  'Software Engineering': <Layers className="w-5 h-5" />,
+  'CI/CD Fundamentals': <Layers className="w-5 h-5" />,
+};
 
 export function ProjectsSection() {
   const containerVariants = {
@@ -111,11 +172,11 @@ export function ProjectsSection() {
                 </div>
 
                 <div>
-                  <p className="text-sm font-bold text-text mb-3 flex items-center gap-2">
+                  <p className="text-base font-bold text-text mb-3 flex items-center gap-2">
                     <span className="w-1 h-3 rounded bg-accent-secondary" />
                     Tech Stack
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {project.technologies.map((tech, i) => (
                       <motion.span
                         key={tech}
@@ -123,8 +184,11 @@ export function ProjectsSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: i * 0.03, duration: 0.3 }}
                         viewport={{ once: true }}
-                        className="px-3 py-1 rounded-full bg-surface/30 border border-white/5 text-accent text-xs font-semibold"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-surface/30 border border-white/5 text-text text-sm font-bold"
                       >
+                        <span className="text-accent">
+                          {techIcons[tech] || <Zap className="w-5 h-5" />}
+                        </span>
                         {tech}
                       </motion.span>
                     ))}
@@ -173,13 +237,23 @@ export function ProjectsSection() {
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent-secondary/10 group-hover:from-accent/15 group-hover:to-accent-secondary/15 transition-all duration-500" />
                 <div className="absolute -inset-10 bg-accent/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 smooth-transition" />
                 
-                <div className="text-center space-y-4 relative z-10 group-hover:scale-105 transition-transform duration-500">
-                  <div className="text-7xl drop-shadow-[0_0_15px_rgba(59,130,246,0.3)] select-none">
-                    {project.category === 'quantum' ? '⚛️' : '💻'}
+                {project.images?.[0] ? (
+                  <Image
+                    src={project.images[0]}
+                    alt={`${project.title} screenshot`}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                ) : (
+                  <div className="text-center space-y-4 relative z-10 group-hover:scale-105 transition-transform duration-500">
+                    <div className="text-7xl drop-shadow-[0_0_15px_rgba(59,130,246,0.3)] select-none">
+                      {project.category === 'quantum' ? '⚛️' : '💻'}
+                    </div>
+                    <h4 className="text-text text-xl font-bold tracking-tight px-6">{project.title}</h4>
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-accent to-accent-secondary mx-auto" />
                   </div>
-                  <h4 className="text-text text-xl font-bold tracking-tight px-6">{project.title}</h4>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-accent to-accent-secondary mx-auto" />
-                </div>
+                )}
               </motion.div>
             </motion.div>
           ))}
@@ -224,13 +298,16 @@ export function ProjectsSection() {
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2.5 py-1 text-xs rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold"
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-bold"
                         >
+                          <span className="text-accent">
+                            {techIcons[tech] || <Zap className="w-5 h-5" />}
+                          </span>
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 text-xs text-muted font-medium">
+                        <span className="px-2 py-1 text-sm text-muted font-medium">
                           +{project.technologies.length - 3} more
                         </span>
                       )}

@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar, Zap } from 'lucide-react';
+import { techIcons } from './ProjectsSection';
 import { portfolioData } from '@/data/portfolio';
 
 export function ExperienceSection() {
@@ -83,12 +84,12 @@ export function ExperienceSection() {
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                       <div>
                         <div className="flex items-center gap-2 mb-2">
-                          <Briefcase className="w-5 h-5 text-accent" />
-                          <h3 className="text-2xl font-bold text-text group-hover:text-accent smooth-transition">
+                          <Briefcase className="w-6 h-6 text-accent" />
+                          <h3 className="text-3xl font-bold text-text group-hover:text-accent smooth-transition">
                             {exp.role}
                           </h3>
                         </div>
-                        <p className="text-accent-secondary text-lg font-semibold">
+                        <p className="text-accent-secondary text-xl font-semibold">
                           {exp.company}
                         </p>
                       </div>
@@ -98,7 +99,7 @@ export function ExperienceSection() {
                       </div>
                     </div>
 
-                    <p className="text-muted text-base leading-relaxed">{exp.description}</p>
+                    <p className="text-muted text-lg leading-relaxed">{exp.description}</p>
 
                     <div className="space-y-3">
                       <p className="text-sm font-bold text-text flex items-center gap-2">
@@ -113,7 +114,7 @@ export function ExperienceSection() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.05, duration: 0.4 }}
                             viewport={{ once: true }}
-                            className="flex items-start gap-2.5 text-muted text-sm"
+                            className="flex items-start gap-2.5 text-muted text-base"
                           >
                             <span className="block w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                             <span>{achievement}</span>
@@ -131,8 +132,9 @@ export function ExperienceSection() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.03, duration: 0.3 }}
                             viewport={{ once: true }}
-                            className="px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-semibold"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/25 text-accent text-sm font-semibold"
                           >
+                            <span className="text-accent">{techIcons[tech] || <Zap className="w-5 h-5" />}</span>
                             {tech}
                           </motion.span>
                         ))}

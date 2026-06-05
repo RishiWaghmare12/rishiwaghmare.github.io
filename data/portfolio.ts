@@ -192,6 +192,7 @@ export const portfolioData: PortfolioData = {
         'Email notifications',
       ],
       technologies: ['React.js', 'Spring Boot', 'MySQL', 'Razorpay', 'GitHub'],
+      images: ['/projects/festorg-homepage.png'],
       duration: '2025',
       startDate: '2025-06',
       endDate: '2025-11',
