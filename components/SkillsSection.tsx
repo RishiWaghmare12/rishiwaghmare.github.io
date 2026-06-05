@@ -13,7 +13,6 @@ import {
   FaBrain,
   FaChartLine,
   FaCode,
-  FaTerminal,
   FaServer,
   FaGithub,
   FaDesktop,
